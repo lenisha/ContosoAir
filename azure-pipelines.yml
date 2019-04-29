@@ -26,8 +26,7 @@ jobs:
 - job: RunNodeBuild
   container: nodejs
   pool:
-    #vmImage: 'Ubuntu 16.04'
-    name: 'ubuntu18'
+    name: 'ubuntu18' # 'ubuntu18'
 
   steps:
     - script: 
@@ -80,11 +79,11 @@ jobs:
       dockerRegistryEndpoint: DockerHub
     displayName: Docker login
  
-  - bash: |
-      set -ex
-      sudo groupadd -g $(stat --format='%g' /var/run/docker.sock) docker
-      sudo usermod -a -G docker $(whoami)
-    displayName: Docker socket
+  #- bash: |
+  #    set -ex
+  #    sudo groupadd -g $(stat --format='%g' /var/run/docker.sock) docker
+  #    sudo usermod -a -G docker $(whoami)
+  #  displayName: Docker socket
 
   - task: Docker@1
     inputs:
