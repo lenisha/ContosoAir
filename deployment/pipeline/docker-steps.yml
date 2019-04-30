@@ -16,8 +16,9 @@ steps:
     inputs:
       command: buildAndPush
       containerRegistry: DockerHub
-      dockerFile: **/Dockerfile
+      dockerFile: deployment/Dockerfile
       repository: lenisha/contosoair
+      buildContext: ./**
       tags: |
         $(Build.BuildId)
         latest
