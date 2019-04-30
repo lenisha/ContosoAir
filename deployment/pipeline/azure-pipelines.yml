@@ -14,13 +14,13 @@ trigger:
   branches:
     include:
     - master
-    - azure-pipelines 
-#pr:
-# autoCancel: true
-# branches:
-#  include: 
-#   - azure-pipelines
-#   - master
+#    - azure-pipelines 
+pr:
+ autoCancel: true
+ branches:
+  include: 
+   - azure-pipelines
+   - master
 
 jobs:
 - job: RunNodeBuild
