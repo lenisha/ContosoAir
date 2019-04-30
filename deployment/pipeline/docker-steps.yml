@@ -2,8 +2,7 @@ steps:
   - task: Docker@2
     inputs:
       command: login
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      containerRegistry: DockerHub
     displayName: Docker login
  
  # prior to agent version 2.149
@@ -16,8 +15,7 @@ steps:
   - task: Docker@2
     inputs:
       command: buildAndPush
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      containerRegistry: DockerHub
       dockerFile: deployment/Dockerfile
       repository: lenisha/contosoair
       buildContext: ../**
