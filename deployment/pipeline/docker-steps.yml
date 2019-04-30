@@ -18,6 +18,7 @@ steps:
       containerRegistry: DockerHub
       dockerFile: deployment/Dockerfile
       repository: lenisha/contosoair
+      buildContext: ../**
       tags: |
         $(Build.BuildId)
         latest
