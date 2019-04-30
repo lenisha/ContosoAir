@@ -21,6 +21,11 @@ spec:
     matchLabels:
       app: contosoapp
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
   template:
     metadata:
       labels:
@@ -28,7 +33,7 @@ spec:
     spec:
       containers:
       - name: contosoapp
-        image: lenisha/contosoair:latest
+        image: lenisha/contosoair:{{TAG}}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
