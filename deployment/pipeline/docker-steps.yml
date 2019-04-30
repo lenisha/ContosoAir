@@ -21,7 +21,7 @@ steps:
       dockerFile: deployment/Dockerfile
       repository: lenisha/contosoair
       buildContext: ../**
-      tags:|
+      tags: |
         $(Build.BuildId)
         latest
     displayName: Docker build and push
