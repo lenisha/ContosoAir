@@ -46,7 +46,7 @@ jobs:
 - job: RunDockerPublish
   container: ubuntu
   dependsOn: RunNodeBuild
-#  condition: and( succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: and( succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
   pool:
     name: 'ubuntu18'    #vmImage: 'Ubuntu 16.04'
