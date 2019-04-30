@@ -20,7 +20,7 @@ steps:
       dockerRegistryEndpoint: DockerHub
       dockerFile: deployment/Dockerfile
       imageName: lenisha/contosoair:latest
-      buildContext: ./
+      buildContext: ../
     displayName: Docker build
 
   - task: Docker@1
