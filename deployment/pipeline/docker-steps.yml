@@ -20,6 +20,7 @@ steps:
       dockerRegistryEndpoint: DockerHub
       dockerFile: deployment/Dockerfile
       imageName: lenisha/contosoair:latest
+      buildContext: ./
     displayName: Docker build
 
   - task: Docker@1
@@ -30,6 +31,7 @@ steps:
       dockerRegistryEndpoint: DockerHub
       imageName: lenisha/contosoair:latest
       arguments: lenisha/contosoair:$(Build.BuildId)
+
   - task: Docker@1
     displayName: Docker Push Latest
     inputs:
@@ -37,6 +39,7 @@ steps:
       containerRegistryType: Container Registry
       dockerRegistryEndpoint: DockerHub
       imageName: lenisha/contosoair:latest
+
   - task: Docker@1
     displayName: Docker Push
     inputs:
