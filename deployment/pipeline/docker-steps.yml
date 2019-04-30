@@ -1,9 +1,8 @@
 steps:
-  - task: Docker@1
+  - task: Docker@2
     inputs:
       command: login
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      containerRegistry: DockerHub
     displayName: Docker login
  
  # prior to agent version 2.149
@@ -13,38 +12,17 @@ steps:
   #    sudo usermod -a -G docker $(whoami)
   #  displayName: Docker socket
 
-  - task: Docker@1
+  - task: Docker@2
     inputs:
-      command: build
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      command: buildAndPush
+      containerRegistry: DockerHub
       dockerFile: deployment/Dockerfile
-      imageName: lenisha/contosoair:latest
-      buildContext: ../
-    displayName: Docker build
+      repository: lenisha/contosoair
+      buildContext: ../s
+      tags: |
+        $(Build.BuildId)
+        latest
+    displayName: Docker build and push
 
-  - task: Docker@1
-    displayName: Docker Tag
-    inputs:
-      command: tag
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
-      imageName: lenisha/contosoair:latest
-      arguments: lenisha/contosoair:$(Build.BuildId)
-
-  - task: Docker@1
-    displayName: Docker Push Latest
-    inputs:
-      command: push
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
-      imageName: lenisha/contosoair:latest
-
-  - task: Docker@1
-    displayName: Docker Push
-    inputs:
-      command: push
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
-      imageName: lenisha/contosoair:$(Build.BuildId)     
-         
+  
+  
