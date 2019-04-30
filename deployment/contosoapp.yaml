@@ -29,6 +29,7 @@ spec:
       containers:
       - name: contosoapp
         image: lenisha/contosoair:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
