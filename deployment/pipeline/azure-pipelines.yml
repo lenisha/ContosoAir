@@ -43,8 +43,7 @@ jobs:
   steps:
     - template: docker-steps.yml
     
-    - bash: find deployment -type f -name "*.yaml" -print0 | 
-      xargs -0 sed -i -e "s/{{TAG}}/$(Build.BuildId)/" 
+    - bash: find deployment -type f -name "*.yaml" -print0 | xargs -0 sed -i -e "s/{{TAG}}/$(Build.BuildId)/" 
 
     - task: CopyFiles@2
       inputs:
